@@ -21,14 +21,15 @@ class AuthController extends Controller
      * Traiter l'inscription.
      */
     public function register(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-            'user_type' => 'required|in:organizer,participant',
-        ]);
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8|confirmed',
+        'user_type' => 'required|in:organizer,participator',
+    ]);
 
+    try {
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -38,8 +39,11 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Inscription réussie ! Bienvenue sur la plateforme.');
+    } catch (\Exception $e) {
+        return back()->withErrors(['error' => 'Une erreur est survenue. Veuillez réessayer.']);
     }
+}
 
     /**
      * Afficher le formulaire de connexion.
@@ -53,18 +57,23 @@ class AuthController extends Controller
      * Traiter la connexion.
      */
     public function login(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
-        ]);
+{
+    $request->validate([
+        'email' => 'required|string|email',
+        'password' => 'required|string',
+    ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect()->route('home');
-        }
+    $remember = $request->has('remember');
 
-        return back()->withErrors(['email' => 'Les identifiants ne correspondent pas.']);
+    if (Auth::attempt($request->only('email', 'password'), $remember)) {
+        return redirect()->route('home');
     }
+
+    // Message d'erreur plus précis
+    return back()->withErrors([
+        'email' => 'L’adresse email ou le mot de passe est incorrect. Veuillez vérifier vos informations et réessayer.',
+    ]);
+}
 
     /**
      * Déconnexion de l'utilisateur.

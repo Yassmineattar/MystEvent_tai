@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name'); // User's name
             $table->string('email', 191)->unique();
             $table->string('password'); // Hashed password
-            $table->enum('user_type', ['organizer', 'user']); // User type
+            $table->enum('user_type', ['organizer', 'participator']); // User type
             $table->rememberToken(); // For "remember me" functionality
             $table->timestamps(); // created_at and updated_at
         });
