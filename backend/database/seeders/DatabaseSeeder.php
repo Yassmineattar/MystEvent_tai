@@ -2,22 +2,35 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use App\Models\Event;
+use App\Models\Clue;
+use App\Models\Ticket;
+use App\Models\EventUser;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-        // User::factory(10)->create();
+        // Seeder pour les utilisateurs
+        User::factory(5)->create(); // Crée 5 utilisateurs
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Seeder pour les événements
+        Event::factory(4)->create(); // Crée 4 événements
+
+        // Seeder pour les indices (Clues)
+        Clue::factory(10)->create(); // Crée 10 indices
+
+        // Seeder pour les tickets
+        Ticket::factory(10)->create(); // Crée 10 tickets
+
+        // Créer des relations entre événements et utilisateurs (EventUser)
+        EventUser::factory(2)->create(); // Crée des relations entre utilisateurs et événements
     }
 }

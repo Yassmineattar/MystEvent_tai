@@ -2,31 +2,30 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable.
+     * Les attributs assignables en masse.
      *
-     * @var list<string>
+     * @var array
      */
     protected $fillable = [
         'name',
         'email',
         'password',
+        'user_type', // Détermine si l'utilisateur est un organisateur ou un participant
     ];
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Les attributs cachés pour les tableaux.
      *
-     * @var list<string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -34,15 +33,37 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * Les attributs qui devraient être castés.
      *
-     * @return array<string, string>
+     * @var array
      */
-    protected function casts(): array
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+
+    /**
+     * Relation : Un utilisateur de type organisateur peut créer plusieurs événements.
+     */
+    public function events()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->hasMany(Event::class, 'organizer_id');
+    }
+
+    /**
+     * Relation : Un utilisateur peut avoir plusieurs tickets.
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class, 'user_id');
+    }
+
+    /**
+     * Relation : Un utilisateur peut participer à plusieurs événements (Relation Many-to-Many).
+     */
+    public function participations()
+    {
+        return $this->belongsToMany(Event::class, 'event_user')
+                ->withPivot('status') // Si tu veux accéder au statut dans la relation
+                ->withTimestamps();
     }
 }
