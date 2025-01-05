@@ -39,7 +39,7 @@ class ParticipantController extends Controller
      */
     public function myEvents()
     {
-        $events = Auth::user()->events;
+        $events = Auth::user()->participations;
         return view('participants.my-events', compact('events'));
     }
 
