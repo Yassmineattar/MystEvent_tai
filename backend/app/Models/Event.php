@@ -31,7 +31,7 @@ class Event extends Model
         return $this->hasMany(Ticket::class);
     }
 
-    public function users()
+    public function participants()
 {
     return $this->belongsToMany(User::class, 'event_user')
                 ->withPivot('status') // Pour accéder au statut

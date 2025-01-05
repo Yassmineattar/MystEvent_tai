@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\TicketController;
 use Illuminate\Support\Facades\Route;
@@ -17,7 +18,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     
     // 🏠 Page d'accueil
-    Route::get('/', [EventController::class, 'index'])->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // 🎉 Routes pour les événements (organisateurs)
     Route::get('/events', [EventController::class, 'index'])->name('events.index'); // Liste des événements créés

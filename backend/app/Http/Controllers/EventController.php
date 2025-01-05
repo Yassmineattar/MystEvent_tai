@@ -22,12 +22,6 @@ class EventController extends Controller
      */
     public function create()
 {
-    // Vérification du rôle
-    if (auth()->user()->role !== 'organizer') {
-        // Redirection ou erreur si l'utilisateur n'est pas un organisateur
-        return redirect()->route('home')->with('error', 'Vous n\'avez pas les autorisations nécessaires.');
-    }
-
     // Si l'utilisateur est un organisateur, afficher la page de création d'événement
     return view('events.create');
 }

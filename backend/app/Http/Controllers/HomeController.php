@@ -2,13 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    // Page d'accueil
     public function index()
     {
-        return view('home');
+        if (Auth::check()) {
+            if (Auth::user()->user_type === 'organizer') {
+                return view('home.organizer');
+            } elseif (Auth::user()->user_type === 'participator') {
+                return view('home.participator');
+            }
+        }
+
+        return view('home.guest');
     }
 }

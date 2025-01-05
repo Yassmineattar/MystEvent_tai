@@ -11,7 +11,7 @@ class CreateEventUserTable extends Migration
             $table->id();
             $table->foreignId('event_id')->constrained('events')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->string('status'); // Statut de participation (par exemple: 'participating', 'confirmed')
+            $table->string('status')->default('pending');; // Statut de participation (par exemple: 'participating', 'confirmed')
             $table->timestamps();
         });
     }

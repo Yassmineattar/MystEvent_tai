@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Événements disponibles')
+
 @section('content')
 <div class="container">
     <h1>Événements Disponibles</h1>
