@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clue extends Model
 {
     use HasFactory;
+    protected $fillable = ['content', 'event_id'];
     // Relation
     public function event()
     {

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     use HasFactory;
+    protected $fillable = ['event_id', 'user_id', 'email', 'code', 'status'];
     // Relations
     public function event()
     {

@@ -4,63 +4,90 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
     /**
-     * Afficher la liste des événements.
+     * Afficher la liste des événements créés par l'organisateur.
      */
     public function index()
     {
-        $events = Event::with('organizer')->get();
+        $events = Event::where('organizerId', Auth::id())->get();
         return view('events.index', compact('events'));
     }
 
     /**
-     * Créer un événement.
+     * Afficher le formulaire de création d’un événement.
      */
-    public function createEvent(Request $request)
+    public function create()
+{
+    // Vérification du rôle
+    if (auth()->user()->role !== 'organizer') {
+        // Redirection ou erreur si l'utilisateur n'est pas un organisateur
+        return redirect()->route('home')->with('error', 'Vous n\'avez pas les autorisations nécessaires.');
+    }
+
+    // Si l'utilisateur est un organisateur, afficher la page de création d'événement
+    return view('events.create');
+}
+
+
+    /**
+     * Sauvegarder un nouvel événement.
+     */
+    public function store(Request $request)
     {
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'start_date' => 'required|date',
+            'eventDate' => 'required|date',
         ]);
 
-        $event = Event::create([
+        Event::create([
             'title' => $request->title,
             'description' => $request->description,
-            'start_date' => $request->start_date,
-            'organizer_id' => auth()->id(),
+            'eventDate' => $request->eventDate,
+            'organizerId' => Auth::id(),
         ]);
 
-        return redirect()->route('home')->with('success', 'Événement créé avec succès');
+        return redirect()->route('events.index')->with('success', 'Événement créé avec succès.');
     }
 
     /**
-     * Ajouter un indice à un événement.
+     * Afficher le formulaire d'édition d’un événement.
      */
-    public function addClue(Request $request, Event $event)
+    public function edit($id)
+    {
+        $event = Event::where('id', $id)->where('organizerId', Auth::id())->firstOrFail();
+        return view('events.edit', compact('event'));
+    }
+
+    /**
+     * Mettre à jour un événement existant.
+     */
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'clue' => 'required|string',
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'eventDate' => 'required|date',
         ]);
 
-        $event->clues()->create([
-            'content' => $request->clue,
-        ]);
+        $event = Event::where('id', $id)->where('organizerId', Auth::id())->firstOrFail();
+        $event->update($request->only('title', 'description', 'eventDate'));
 
-        return redirect()->route('home')->with('success', 'Indice ajouté avec succès');
+        return redirect()->route('events.index')->with('success', 'Événement mis à jour avec succès.');
     }
 
     /**
-     * Afficher les utilisateurs intéressés et ayant gagné.
+     * Supprimer un événement.
      */
-    public function showInterestedUsers(Event $event)
+    public function destroy($id)
     {
-        $interestedUsers = $event->users()->wherePivot('status', 'pending')->get();
-        $acceptedUsers = $event->users()->wherePivot('status', 'accepted')->get();
+        $event = Event::where('id', $id)->where('organizerId', Auth::id())->firstOrFail();
+        $event->delete();
 
-        return view('events.show_users', compact('interestedUsers', 'acceptedUsers'));
+        return redirect()->route('events.index')->with('success', 'Événement supprimé avec succès.');
     }
 }

@@ -7,6 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['title', 'description', 'eventDate', 'organizerId'];
+    /**
+     * Cast des attributs en objets DateTime.
+     */
+    protected $casts = [
+        'eventDate' => 'datetime',
+    ];
     // Relations
     public function organizer()
     {
