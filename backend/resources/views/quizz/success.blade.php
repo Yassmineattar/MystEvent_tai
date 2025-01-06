@@ -5,7 +5,7 @@
     <h1>Félicitations !</h1>
     <p>Vous avez terminé le quiz avec succès !</p>
 
-    <h2>Voici les indices que vous avez découverts pour l'événement : {{ $event->title }}</h2>
+    <h2>Voici les indices que vous avez découverts :</h2>
     <ul>
         @foreach($clues as $clue)
             <li>{{ $clue->content }}</li>

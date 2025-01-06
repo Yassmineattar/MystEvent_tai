@@ -60,6 +60,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/quizz/{event}', [QuizzController::class, 'submit'])->name('quizz.submit');
     Route::get('/quizz/{event}/success', [QuizzController::class, 'success'])->name('quizz.success');
     Route::get('/quizz/{event}/view-indices', [QuizzController::class, 'viewIndices'])->name('quizz.viewIndices');
+    Route::get('/quizz/{event}/fail', [QuizzController::class, 'fail'])->name('quizz.fail');
+
 
 
     // 🎟️ Routes pour les tickets
