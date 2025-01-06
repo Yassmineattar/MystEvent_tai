@@ -15,7 +15,7 @@ class QuizzController extends Controller
     public function start(Request $request, Event $event)
     {
         // Charger les questions de manière aléatoire
-        $questions = Quiz::inRandomOrder()->take(4)->get();
+        $questions = Quiz::inRandomOrder()->take(4)->get(); // Utiliser get() pour obtenir la collection
         $answeredQuestions = session()->get('answered_questions', []);
 
         // Limiter le nombre de questions à 4
@@ -31,7 +31,7 @@ class QuizzController extends Controller
             return redirect()->route('quizz.success', $event->id);
         }
 
-        // Prendre une question au hasard
+        // Récupérer la première question non encore répondue
         $currentQuestion = $remainingQuestions->first();
 
         return view('quizz.question', compact('event', 'currentQuestion'));
@@ -46,18 +46,19 @@ class QuizzController extends Controller
         // Vérification de la réponse
         $isCorrect = $request->get('answer') === $question->correct_answer;
 
-        // Ajouter la question à la liste des questions répondues
-        $answeredQuestions[] = $question->id;
-        session()->put('answered_questions', $answeredQuestions);
+        // Si la réponse est correcte
+        if ($isCorrect) {
+            // Ajouter la question à la liste des questions répondues
+            $answeredQuestions[] = $question->id;
+            session()->put('answered_questions', $answeredQuestions);
 
-        // Ajouter un message si la réponse est incorrecte
-        if (!$isCorrect) {
-            session()->put('quiz_failed', true);
-            return redirect()->route('participants.myEvents')->with('error', 'Vous avez échoué au quiz.');
+            // Rediriger vers la prochaine question
+            return redirect()->route('quizz.start', $event->id)->with('message', 'Réponse correcte !');
         }
 
-        // Rediriger vers la prochaine question
-        return redirect()->route('quizz.start', $event->id)->with('message', 'Réponse correcte !');
+        // Si la réponse est incorrecte, on affiche un message et l'utilisateur reste sur la même question
+        return redirect()->route('quizz.start', $event->id)
+                         ->with('error', 'Réponse incorrecte, essayez à nouveau.');
     }
 
     // Afficher le message de succès
@@ -92,12 +93,12 @@ class QuizzController extends Controller
 
         return view('quizz.success', compact('event', 'clues'));
     }
+
     public function viewIndices(Event $event)
-{
-    // Récupérer les indices collectés par le participant pour cet événement
-    $clues = $event->clues;
+    {
+        // Récupérer les indices collectés par le participant pour cet événement
+        $clues = $event->clues;
 
-    return view('quizz.viewIndices', compact('event', 'clues'));
-}
-
+        return view('quizz.viewIndices', compact('event', 'clues'));
+    }
 }
