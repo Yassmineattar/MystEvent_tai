@@ -1,5 +1,5 @@
 @extends('layouts.app')
-<? /*Affiche tous les événements créés par l'organisateur.*/ ?>
+
 @section('content')
 <div class="container">
     <h1>Mes Événements</h1>
@@ -20,12 +20,21 @@
                         <td>{{ $event->title }}</td>
                         <td>{{ $event->eventDate->format('d/m/Y H:i') }}</td>
                         <td>
+                            <!-- Bouton Modifier -->
                             <a href="{{ route('events.edit', $event->id) }}" class="btn btn-warning btn-sm">Modifier</a>
+
+                            <!-- Bouton Supprimer -->
                             <form action="{{ route('events.destroy', $event->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                             </form>
+
+                            <!-- Bouton Voir les indices -->
+                            <a href="{{ route('clues.index', $event->id) }}" class="btn btn-info btn-sm">Voir les indices</a>
+
+                            <!-- Bouton Voir les participants intéressés -->
+                            <a href="{{ route('participants.interested', $event->id) }}" class="btn btn-secondary btn-sm">Voir les participants</a>
                         </td>
                     </tr>
                 @endforeach

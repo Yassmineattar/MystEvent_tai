@@ -51,4 +51,15 @@ class ParticipantController extends Controller
         $tickets = Ticket::where('user_id', Auth::id())->get();
         return view('participants.my-tickets', compact('tickets'));
     }
+    // Afficher les utilisateurs intéressés par un événement
+    public function showInterestedParticipants(Event $event)
+    {
+        // Utilisateurs en attente
+        $interestedUsers = $event->participants()->wherePivot('status', 'pending')->get();
+
+        // Utilisateurs acceptés
+        $acceptedUsers = $event->participants()->wherePivot('status', 'accepted')->get();
+
+        return view('participants.interested', compact('event', 'interestedUsers', 'acceptedUsers'));
+    }
 }

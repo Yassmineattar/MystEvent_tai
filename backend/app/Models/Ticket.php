@@ -1,13 +1,18 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TicketEmail;
 
 class Ticket extends Model
 {
     use HasFactory;
+
     protected $fillable = ['event_id', 'user_id', 'email', 'code', 'status'];
+
     // Relations
     public function event()
     {
@@ -22,7 +27,6 @@ class Ticket extends Model
     // Méthode pour envoyer un ticket par email
     public function sendTicketEmail()
     {
-        // Code pour envoyer un email
+        Mail::to($this->email)->send(new TicketEmail($this));
     }
 }
-
