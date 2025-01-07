@@ -57,23 +57,31 @@ class AuthController extends Controller
      * Traiter la connexion.
      */
     public function login(Request $request)
-{
-    $request->validate([
-        'email' => 'required|string|email',
-        'password' => 'required|string',
-    ]);
-
-    $remember = $request->has('remember');
-
-    if (Auth::attempt($request->only('email', 'password'), $remember)) {
-        return redirect()->route('home');
+    {
+        $request->validate([
+            'email' => 'required|string|email',
+            'password' => 'required|string',
+        ]);
+    
+        $remember = $request->has('remember');
+    
+        if (Auth::attempt($request->only('email', 'password'), $remember)) {
+            // Redirection selon le type d'utilisateur
+            $user = Auth::user();
+    
+            if ($user->user_type === 'organizer') {
+                return redirect()->route('home')->with('success', 'Bienvenue, Organisateur !');
+            } elseif ($user->user_type === 'participator') {
+                return redirect()->route('home')->with('success', 'Bienvenue, Participant !');
+            }
+        }
+    
+        // Message d'erreur plus précis
+        return back()->withErrors([
+            'email' => 'L’adresse email ou le mot de passe est incorrect. Veuillez vérifier vos informations et réessayer.',
+        ]);
     }
-
-    // Message d'erreur plus précis
-    return back()->withErrors([
-        'email' => 'L’adresse email ou le mot de passe est incorrect. Veuillez vérifier vos informations et réessayer.',
-    ]);
-}
+    
 
     /**
      * Déconnexion de l'utilisateur.

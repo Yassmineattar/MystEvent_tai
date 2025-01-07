@@ -62,4 +62,13 @@ class ParticipantController extends Controller
 
         return view('participants.interested', compact('event', 'interestedUsers', 'acceptedUsers'));
     }
+    public function home()
+    {
+        // Charger les événements depuis la base de données triés par date
+        $events = Event::orderBy('eventDate', 'asc')->get();
+    
+        // Passer les événements à la vue
+        return view('home.participator', ['events' => $events]);
+    }
+    
 }

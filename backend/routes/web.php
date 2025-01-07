@@ -9,6 +9,11 @@ use App\Http\Controllers\ClueController;
 use App\Http\Controllers\QuizzController;
 use Illuminate\Support\Facades\Route;
 
+// 🌟 Page d'accueil principale
+Route::get('/', function () {
+    return view('welcome');
+});
+
 // 🚪 Routes publiques
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -18,9 +23,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // 🔐 Routes protégées (requièrent une authentification)
 Route::middleware(['auth'])->group(function () {
-    
-    // 🏠 Page d'accueil
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // 🏠 Page d'accueil personnalisée
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // 🎉 Routes pour les événements (organisateurs)
     Route::get('/events', [EventController::class, 'index'])->name('events.index'); // Liste des événements créés
@@ -62,10 +67,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quizz/{event}/view-indices', [QuizzController::class, 'viewIndices'])->name('quizz.viewIndices');
     Route::get('/quizz/{event}/fail', [QuizzController::class, 'fail'])->name('quizz.fail');
 
-
-
     // 🎟️ Routes pour les tickets
-    Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show'); // Afficher un ticket
-    Route::post('/tickets/{event}/generate', [TicketController::class, 'generateTicket'])->name('tickets.generate'); // Générer un ticket
-    Route::put('/tickets/{ticket}/status', [TicketController::class, 'updateStatus'])->name('tickets.updateStatus'); // Mise à jour du statut d'un ticket
+    Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
+    Route::post('/tickets/{event}/generate', [TicketController::class, 'generateTicket'])->name('tickets.generate');
+    Route::put('/tickets/{ticket}/status', [TicketController::class, 'updateStatus'])->name('tickets.updateStatus');
 });
