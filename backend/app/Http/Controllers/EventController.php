@@ -84,4 +84,18 @@ class EventController extends Controller
 
         return redirect()->route('events.index')->with('success', 'Événement supprimé avec succès.');
     }
+
+    public function show()
+    {
+        // Récupérer l'événement "Masquerade Ball" de la base de données
+        $event = Event::where('title', 'Soirée Masquerade Ball')->first();
+
+        // Vérifier si l'événement est trouvé
+        if (!$event) {
+            abort(404, 'Événement non trouvé');
+        }
+
+        // Passer l'événement à la vue
+        return view('welcome', compact('event'));
+    }
 }

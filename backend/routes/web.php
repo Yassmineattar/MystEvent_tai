@@ -21,6 +21,13 @@ Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('regi
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+//test
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+//test
+Route::get('/welcome', [EventController::class, 'show'])->name('welcome');
+
 // 🔐 Routes protégées (requièrent une authentification)
 Route::middleware(['auth'])->group(function () {
      Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

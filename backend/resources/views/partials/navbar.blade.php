@@ -1,28 +1,34 @@
-<nav class="bg-[#5D3F6B] text-[#F1E8E1] shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<nav class=" bg-[rgba(55,40,61,0.88)] text-[#F1E8E1] shadow-lg">
+
+    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="{{ route('home') }}" class="text-2xl font-bold flex items-center space-x-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#C99E9A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zM12 22c-3.866 0-7-1.343-7-3V9c0-1.657 3.134-3 7-3s7 1.343 7 3v10c0 1.657-3.134 3-7 3z" />
-                    </svg>
-                    <span class="text-[#F1E8E1]">MystEvent</span>
-                </a>
+            <a href="{{ route('welcome') }}" class="text-4xl font-serif font-extrabold text-[#F1E8E1] flex items-center space-x-2 hover:text-[#C99E9A] transition duration-300">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#C99E9A]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zM12 22c-3.866 0-7-1.343-7-3V9c0-1.657 3.134-3 7-3s7 1.343 7 3v10c0 1.657-3.134 3-7 3z" />
+            </svg>
+            <span class="text-[#F1E8E1]">MystEvent</span>
+</a>
+
             </div>
 
             <!-- Menu desktop -->
-            <div class="hidden md:flex space-x-4 items-center">
-                <a href="{{ route('home') }}" class="hover:text-[#C99E9A] px-3 py-2 rounded-md text-sm font-medium">
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="{{ route('welcome') }}" class="text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
                     Accueil
                 </a>
 
-                <!-- Dropdown des événements (organisateur ou participant) -->
+                <!-- Dropdown des événements -->
                 @auth
                     <div class="relative">
-                        <button id="event-menu-button" class="hover:text-[#C99E9A] px-3 py-2 rounded-md text-sm font-medium flex items-center space-x-1">
+                        <button id="event-menu-button" class="text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] flex items-center space-x-2 transition duration-300">
                             Événements
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M6 9l6 6 6-6"></path>
                             </svg>
                         </button>
@@ -39,25 +45,25 @@
                     </div>
                 @endauth
 
-                <!-- Déconnexion -->
+                <!-- Connexion / Inscription -->
                 @auth
                     <form action="{{ route('logout') }}" method="POST" class="inline">
                         @csrf
-                        <button type="submit" class="hover:text-[#C99E9A] px-3 py-2 rounded-md text-sm font-medium">
+                        <button type="submit" class="text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
                             Déconnexion
                         </button>
                     </form>
                 @else
-                    <a href="{{ route('login') }}" class="hover:text-[#C99E9A] px-3 py-2 rounded-md text-sm font-medium">
+                    <a href="{{ route('login') }}" class="text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
                         Connexion
                     </a>
-                    <a href="{{ route('register') }}" class="hover:text-[#C99E9A] px-3 py-2 rounded-md text-sm font-medium">
+                    <a href="{{ route('register') }}" class="text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
                         Inscription
                     </a>
                 @endauth
             </div>
 
-            <!-- Bouton menu mobile -->
+            <!-- Menu mobile -->
             <div class="md:hidden flex items-center">
                 <button id="mobile-menu-button" class="text-[#F1E8E1] hover:text-[#C99E9A] focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -71,7 +77,7 @@
     <!-- Menu mobile -->
     <div id="mobile-menu" class="hidden bg-[#F1E8E1] border-t border-gray-200 md:hidden">
         <div class="space-y-1 px-4 pt-4 pb-3">
-            <a href="{{ route('home') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
+            <a href="{{ route('welcome') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
                 Accueil
             </a>
             <a href="{{ route('login') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
@@ -83,6 +89,7 @@
         </div>
     </div>
 </nav>
+
 
 <!-- Script pour le menu mobile et le menu dropdown -->
 <script>
