@@ -98,4 +98,19 @@ class EventController extends Controller
         // Passer l'événement à la vue
         return view('welcome', compact('event'));
     }
+
+    public function availableEvents(Request $request)
+{
+    $search = $request->query('search');
+
+    // Filtrer les événements en fonction de la recherche
+    $events = Event::when($search, function ($query, $search) {
+        return $query->where('title', 'like', "%{$search}%");
+    })->get();
+
+    return view('participants.available-events', compact('events'));
+}
+
+
+    
 }
