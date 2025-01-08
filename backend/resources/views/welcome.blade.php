@@ -12,7 +12,7 @@
                 <div class="relative w-full h-full bg-cover bg-center" style="background-image: url('https://c.pxhere.com/photos/ee/62/audience_band_blur_bokeh_celebration_club_concert_crowd-1557333.jpg!d');">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white">
                         <h1 id="dynamic-text" class="text-7xl font-bold mb-6 text-white font-poppins py-12"></h1>
-                        <p class="text-2xl mb-8 font-playfair px-12">Plongez dans des événements surprises où chaque moment compte ! Participez à des quiz interactifs et obtenez des indices exclusifs pour découvrir l'événement mystérieux qui vous attend. Résolvez les énigmes, débloquez des secrets et vivez une expérience unique ! Rejoignez l'aventure dès maintenant sur MystEvent !</p>
+                        <p class="text-2xl mb-8 font-playfair px-16">Plongez dans des événements surprises où chaque moment compte ! Participez à des quiz interactifs et obtenez des indices exclusifs pour découvrir l'événement mystérieux qui vous attend. Résolvez les énigmes, débloquez des secrets et vivez une expérience unique ! Rejoignez l'aventure dès maintenant sur MystEvent !</p>
                         <div class="flex space-x-4">
                             <a href="{{ route('login') }}" class="bg-white text-[#5D3F6B] px-6 py-3 rounded-lg font-semibold hover:bg-[#F1E8E1] transition duration-300">
                                 Se connecter
