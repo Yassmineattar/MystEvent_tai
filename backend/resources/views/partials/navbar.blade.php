@@ -16,6 +16,14 @@
 
             <!-- Menu desktop -->
             <div class="hidden md:flex space-x-6 items-center">
+                <!-- Accueil (invité uniquement) -->
+                @guest
+                <a href="{{ route('welcome') }}" class="flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                @endguest
+
                 <!-- Dropdown Événements -->
                 @auth
                 <div class="relative">
@@ -25,6 +33,7 @@
                         <i class="fas fa-chevron-down text-sm"></i>
                     </button>
 
+                    <!-- Contenu du menu déroulant -->
                     <div id="event-menu" class="hidden absolute bg-[#F1E8E1] text-[#333333] rounded-md shadow-lg mt-2 z-10">
                         @if(auth()->user()->user_type === 'organizer')
                         <a href="{{ route('events.index') }}" class="block px-4 py-2 hover:bg-[#A38E91]">
@@ -54,7 +63,7 @@
                 </a>
                 @endif
 
-                <!-- Profil -->
+                <!-- Lien Profil -->
                 <a href="{{ route('home') }}" class="flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
                     <i class="fas fa-user-alt"></i>
                     <span>Profil</span>
@@ -69,6 +78,18 @@
                     </button>
                 </form>
                 @endauth
+
+                <!-- Connexion / Inscription -->
+                @guest
+                <a href="{{ route('login') }}" class="flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>Connexion</span>
+                </a>
+                <a href="{{ route('register') }}" class="flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Inscription</span>
+                </a>
+                @endguest
             </div>
 
             <!-- Menu mobile -->
@@ -80,8 +101,8 @@
         </div>
     </div>
 
-    <!-- Menu mobile -->
-    <div id="mobile-menu" class="hidden bg-[#F1E8E1] border-t border-gray-200 md:hidden">
+   <!-- Menu mobile -->
+   <div id="mobile-menu" class="hidden bg-[#F1E8E1] border-t border-gray-200 md:hidden">
         @auth
         <!-- Organisateur -->
         @if(auth()->user()->user_type === 'organizer')
@@ -104,14 +125,11 @@
         <a href="{{ route('participants.myTickets') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
             <i class="fas fa-ticket-alt"></i> Mes tickets
         </a>
-        @endif
 
-        <!-- Profil -->
+        @endif
         <a href="{{ route('home') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
             <i class="fas fa-user-alt"></i> Profil
         </a>
-
-        <!-- Déconnexion -->
         <form action="{{ route('logout') }}" method="POST" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
             @csrf
             <button type="submit" class="w-full text-left">
@@ -120,7 +138,6 @@
         </form>
         @endauth
 
-        <!-- Connexion / Inscription (invité uniquement) -->
         @guest
         <a href="{{ route('login') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
             <i class="fas fa-sign-in-alt"></i> Connexion
