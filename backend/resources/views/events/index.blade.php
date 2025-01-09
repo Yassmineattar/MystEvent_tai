@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-7xl mx-auto mt-12 bg-white shadow-md rounded-lg p-8">
     <!-- Titre principal -->
-    <h1 class="text-4xl font-extrabold text-[#5D3F6B] mb-8">📋 Mes Événements</h1>
+    <h1 class="text-4xl font-extrabold text-[#5D3F6B] mb-8"> Mes Événements</h1>
 
     <!-- Bouton Créer un événement -->
     <div class="text-right mb-8">
@@ -19,7 +19,7 @@
                 <div class="bg-[#F1E8E1] shadow-md rounded-lg p-6 hover:shadow-lg transition duration-300">
                     <!-- Titre de l'événement -->
                     <h2 class="text-2xl font-bold text-[#5D3F6B] mb-2">{{ $event->title }}</h2>
-                    <p class="text-gray-600 mb-4">📅 {{ $event->eventDate->format('d/m/Y H:i') }}</p>
+                    <p class="text-gray-600 mb-4"> {{ $event->eventDate->format('d/m/Y H:i') }}</p>
 
                     <!-- Boutons d'actions -->
                     <div class="flex flex-wrap gap-4 mt-4">

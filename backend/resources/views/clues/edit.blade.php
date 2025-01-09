@@ -6,7 +6,7 @@
 <div class="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-10">
     <!-- Titre principal -->
     <div class="text-center mb-8">
-        <h1 class="text-4xl font-extrabold text-[#5D3F6B]">✏️ Modifier l'Indice</h1>
+        <h1 class="text-4xl font-extrabold text-[#5D3F6B]"> Modifier l'Indice</h1>
         <h2 class="text-2xl font-semibold text-gray-600 mt-2">Événement : <span class="text-[#9B4F96]">{{ $event->title }}</span></h2>
     </div>
 
