@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-6xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-8 text-center">
     <!-- Titre principal -->
-    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6">🔍 Indices pour l'événement : {{ $event->title }}</h1>
+    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6"> Indices pour l'événement : {{ $event->title }}</h1>
 
     <!-- Liste des indices -->
     @if($clues->count() > 0)

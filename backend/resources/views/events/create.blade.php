@@ -5,7 +5,7 @@
 @section('content')
 <div class="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-8">
     <!-- Titre de la page -->
-    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6">📅 Créer un Événement</h1>
+    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6"> Créer un Événement</h1>
 
     <!-- Formulaire de création d'événement -->
     <form action="{{ route('events.store') }}" method="POST" class="space-y-6">
