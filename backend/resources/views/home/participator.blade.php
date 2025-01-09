@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
+@php
+use Illuminate\Support\Facades\Auth;
+@endphp
+
 @section('title', 'Tableau de bord - Participant')
 
 @section('content')
-<div class="max-w-4xl mx-auto mt-12 bg-white shadow-xl rounded-xl p-10 transition-transform transform hover:scale-105">
+<div class="max-w-4xl mx-auto mt-12 bg-white shadow-xl my-6  rounded-xl p-10 ">
     <!-- Titre de bienvenue -->
     <h1 class="text-5xl font-bold text-[#5D3F6B] mb-6 text-shadow-md">Bienvenue, {{ Auth::user()->name }} ! 🎉</h1>
     <p class="text-gray-600 text-lg mb-8">
@@ -34,7 +38,7 @@
             Voir mes tickets
         </a>
         <a href="{{ route('participants.myEvents') }}" class="flex items-center justify-center bg-[#5D3F6B] text-white px-8 py-5 rounded-xl font-medium shadow-lg hover:bg-[#9B4F96] transition duration-300 transform hover:scale-105">
-            Voir mes événements
+            Voir les événements rejoints
         </a>
     </div>
 

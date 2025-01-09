@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8 mt-10">
+<div class="max-w-lg mx-auto bg-white my-5 shadow-lg rounded-lg p-8 mt-10">
     <h2 class="text-2xl font-bold text-center text-[#5D3F6B] mb-6">Inscription</h2>
 
     <!-- Message flash de succès -->

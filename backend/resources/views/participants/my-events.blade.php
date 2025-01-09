@@ -65,12 +65,12 @@
     @endif
 </div>
 <div>
-    <div class="mt-8 text-center">
+    <div class="mt-8 text-center my-5">
         <a href="{{ route('home') }}" class="flex items-center justify-center bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 hover:bg-[#C99E9A] max-w-max mx-auto">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
-            <span class="text-lg">Revenir au profil</span>
+            <span class="text-lg ">Revenir au profil</span>
         </a>
     </div>
 </div>
