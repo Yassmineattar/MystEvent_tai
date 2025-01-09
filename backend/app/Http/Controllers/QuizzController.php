@@ -34,7 +34,10 @@ class QuizzController extends Controller
         // Récupérer la première question non encore répondue
         $currentQuestion = $remainingQuestions->first();
 
-        return view('quizz.question', compact('event', 'currentQuestion'));
+        // Définir le temps restant pour le quiz
+        $timeLeft = 30;
+
+        return view('quizz.question', compact('event', 'currentQuestion', 'timeLeft'));
     }
 
     // Vérifier la réponse et passer à la question suivante

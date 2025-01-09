@@ -81,4 +81,14 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');
     Route::post('/tickets/{event}/generate', [TicketController::class, 'generateTicket'])->name('tickets.generate');
     Route::put('/tickets/{ticket}/status', [TicketController::class, 'updateStatus'])->name('tickets.updateStatus');
+
+    
+    // Route pour diriger vers la page fail une fois timer écoulé
+
+
+
+
+
+
+
 });
