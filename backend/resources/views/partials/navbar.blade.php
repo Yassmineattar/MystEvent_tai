@@ -1,7 +1,7 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 </head>
-<nav class="bg-[rgba(55,40,61,0.88)] text-[#F1E8E1] shadow-lg rounded-lg">
+<nav class="bg-[rgba(55,40,61,0.88)] text-[#F1E8E1] shadow-lg">
     <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
         <div class="flex justify-between items-center h-16">
             <!-- Logo -->

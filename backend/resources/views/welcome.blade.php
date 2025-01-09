@@ -143,55 +143,119 @@
 </div>
 
 
-    
-
-<!-- Fonctionnalités Section -->
+ <!-- Fonctionnalités Section -->
 <div class="max-w-7xl mx-auto mt-16 px-6 lg:px-8">
-    <h2 class="text-4xl font-semibold text-center text-[#5D3F6B] mb-12">
-        Découvrez nos fonctionnalités
+    <h2 class="text-4xl font-semibold text-center text-[#5D3F6B] mb-12 font-poppins">
+        Découvrez nos fonctionnalités uniques
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         
         <!-- Fonctionnalité 1 : Organisateur -->
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#5D3F6B] mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-            </svg>
-            <h3 class="text-xl font-semibold text-[#5D3F6B] mb-2">Créer des événements</h3>
-            <p class="text-gray-600 mt-2">Créez et gérez des événements surprises pour votre communauté.</p>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out text-center transform hover:translate-y-2">
+            <img src="https://i.pinimg.com/736x/08/4c/33/084c334578eb54c4d0ea0dbe3dc6979a.jpg" alt="Créer des événements" class="h-36 w-60 mx-auto mb-4 object-cover rounded-lg">
+            <h3 class="text-xl font-semibold text-[#5D3F6B] mb-2">Créez vos événements</h3>
+            <p class="text-gray-600 mt-2">Organisez et personnalisez des événements surprises pour apporter du fun à votre communauté.</p>
         </div>
 
         <!-- Fonctionnalité 2 : Participant -->
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#5D3F6B] mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12h7m-7-6h4m-4 12h4" />
-            </svg>
-            <h3 class="text-xl font-semibold text-[#5D3F6B] mb-2">Rejoindre des événements</h3>
-            <p class="text-gray-600 mt-2">Participez à des événements mystères et découvrez des expériences uniques.</p>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out text-center transform hover:translate-y-2">
+            <img src="https://i.pinimg.com/736x/4d/7f/20/4d7f202a0d827d6da2d5aea02e1320e0.jpg" alt="Rejoindre des événements" class="h-36 w-60 mx-auto mb-4 object-cover rounded-lg">
+            <h3 class="text-xl font-semibold text-[#5D3F6B] mb-2">Participez à des événements mystères</h3>
+            <p class="text-gray-600 mt-2">Rejoignez des événements secrets, résolvez des énigmes et vivez des expériences inoubliables.</p>
         </div>
 
         <!-- Fonctionnalité 3 : Quizz -->
-        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out text-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-[#5D3F6B] mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-5a2 2 0 012-2h1m5 7v-5a2 2 0 00-2-2h-1" />
-            </svg>
-            <h3 class="text-xl font-semibold text-[#5D3F6B] mb-2">Participez à des quizz</h3>
-            <p class="text-gray-600 mt-2">Débloquez des indices et gagnez des tickets en résolvant les quizz !</p>
+        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition duration-300 ease-in-out text-center transform hover:translate-y-2">
+            <img src="https://i.pinimg.com/736x/2d/73/b9/2d73b9f67f338abbf3866a1e60d62060.jpg" alt="Répondre à des quizz" class="h-36 w-60 mx-auto mb-4 object-cover rounded-lg">
+            <h3 class="text-xl font-semibold text-[#5D3F6B] mb-2">Répondez aux quizz</h3>
+            <p class="text-gray-600 mt-2">Testez vos connaissances, débloquez des indices et gagnez des tickets pour des événements exclusifs !</p>
         </div>
 
     </div>
 </div>
 
 <!-- Call to Action Section -->
-<div class="bg-[#5D3F6B] text-white py-12 mt-16 text-center">
-    <h2 class="text-3xl font-semibold mb-4">Prêt à rejoindre l'aventure ?</h2>
-    <p class="text-lg mb-8">Créez un compte dès aujourd'hui et choisissez votre rôle : Organisateur ou Participant.</p>
-    <div class="flex justify-center space-x-4">
-        <a href="{{ route('register') }}" class="bg-white text-[#5D3F6B] px-6 py-3 rounded-lg font-semibold hover:bg-[#F1E8E1] transition duration-300">
+<!-- Call to Action Section with Fireworks and Scrolling Images -->
+<div style="height: 400px;" class="relative bg-[#5D3F6B] text-white py-16 mt-16 text-center overflow-hidden shadow-xl ">
+    <!-- Fireworks Animation Background -->
+    <div class="absolute inset-0 bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] opacity-70 z-0"></div>
+    <div id="fireworks-container" class="absolute inset-0 z-0"></div>
+    <!-- Animated Scrolling Images -->
+    <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div class="flex w-max animate-scrollImages">
+            <!-- Images qui défilent -->
+            <img src="https://i.pinimg.com/736x/91/2f/68/912f6806c19e94a1073f218672af5d0f.jpg" class="object-cover h-full w-1/3" alt="Image 1" />
+            <img src="https://media.istockphoto.com/id/1397223333/fr/photo/des-amis-assis-autour-dun-feu-de-joie-sur-la-plage-le-soir.jpg?s=612x612&w=0&k=20&c=8HJFn6uc1md_RMO2j-OR4hSFqJgS_pBMGWKhDSvOmpw=" class="object-cover h-full w-1/3" alt="Image 2" />
+            <img src="https://i.pinimg.com/736x/dc/e4/30/dce4309363fa29fea2de08cd51db45cc.jpg" class="object-cover h-full w-1/3" alt="Image 3" />
+            <img src="https://i.pinimg.com/736x/91/2f/68/912f6806c19e94a1073f218672af5d0f.jpg" class="object-cover h-full w-1/3" alt="Image 1" />
+        </div>
+    </div>
+
+    <h2 class="text-5xl font-extrabold mb-4 text-shadow-lg z-10 relative">Rejoignez l'aventure maintenant !</h2>
+    <p class="text-xl mb-8 font-medium z-10 relative">Inscrivez-vous dès aujourd'hui et choisissez votre rôle : Organisateur ou Participant, c'est à vous de jouer !</p>
+    <div class="flex justify-center space-x-6 z-10 relative">
+        <a href="{{ route('register') }}" class="bg-white text-[#5D3F6B] px-8 py-4 rounded-full font-bold shadow-lg hover:scale-110 hover:bg-[#F1E8E1] transform transition duration-300">
             S'inscrire
         </a>
     </div>
 </div>
+
+<!-- Fireworks Animation Script -->
+<script>
+    // Simple fireworks animation using particles.js (you can replace this with any animation library)
+    var fireworksContainer = document.getElementById('fireworks-container');
+    particlesJS(fireworksContainer, {
+        particles: {
+            number: { value: 30 },
+            size: { value: 3 },
+            opacity: { value: 0.5, random: true },
+            line_linked: { enable: false },
+            move: {
+                speed: 4,
+                direction: "top",
+                out_mode: "out",
+                random: true
+            }
+        },
+        interactivity: {
+            events: { onhover: { enable: true, mode: "repulse" } }
+        }
+    });
+</script>
+
+<!-- CSS Animation for continuous scrolling images -->
+<style>
+    @keyframes scrollImages {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-33.33%); }
+    }
+
+    .animate-scrollImages {
+        animation: scrollImages 30s linear infinite;
+    }
+
+    /* Assurez-vous que le conteneur est assez large pour contenir toutes les images */
+    .flex {
+        display: flex;
+    }
+    .object-cover {
+        object-fit: cover; /* Garantir que les images couvrent l'espace sans être déformées */
+    }
+
+    .h-full {
+        height: 100%; /* L'image occupe toute la hauteur du conteneur */
+    }
+
+    .w-1\/3 {
+        width: 33.33%; /* Chaque image occupe un tiers de la largeur du conteneur */
+    }
+   
+
+   
+</style>
+
+
+
 
     <br>
     <script>
@@ -239,9 +303,6 @@
     nextBtn.addEventListener("click", () => {
         goToSlide(currentIndex + 1);
     });
-
-    // Initialiser le carrousel
-    goToSlide(currentIndex);
 </script>
 
 
