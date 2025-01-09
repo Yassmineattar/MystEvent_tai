@@ -84,6 +84,10 @@ Route::middleware(['auth'])->group(function () {
 
     
     // Route pour diriger vers la page fail une fois timer écoulé
+    // Dans routes/web.php
+
+
+    
 
 
 
