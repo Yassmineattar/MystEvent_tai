@@ -111,6 +111,19 @@ class EventController extends Controller
     return view('participants.available-events', compact('events'));
 }
 
+public function dashboard()
+{
+    $user = Auth::user();
+
+    // Compter les événements rejoins par l'utilisateur
+    $eventsCount = $user->events()->count(); // Nombre d'événements rejoins
+    $ticketsCount = $user->tickets()->count(); // Nombre de tickets gagnés
+    $upcomingEventsCount = $user->events()->where('eventDate', '>', now())->count(); // Nombre d'événements à venir
+    $recentEvents = $user->events()->latest()->take(5)->get(); // Derniers événements auxquels l'utilisateur a participé
+
+    return view('participants.home', compact('eventsCount', 'ticketsCount', 'upcomingEventsCount', 'recentEvents'));
+}
+
 
     
 }

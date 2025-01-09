@@ -66,4 +66,6 @@ class User extends Authenticatable
                 ->withPivot('status') // Si tu veux accéder au statut dans la relation
                 ->withTimestamps();
     }
+
+    
 }

@@ -31,6 +31,9 @@
                             </svg>
                             Voir les indices
                         </a>
+
+                        
+
                     @else
                         <!-- Sinon -->
                         <a href="{{ route('quizz.start', $event->id) }}" class="flex items-center justify-center bg-[#c8a5a3] text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-[#A38E91] transition duration-300">
@@ -39,6 +42,19 @@
                             </svg>
                             Passer un Quizz
                         </a>
+                        <!-- Bouton pour quitter l'événement -->
+                        <form action="{{ route('event.leave', $event->id) }}" method="POST" class="mt-4">
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="flex items-center justify-center bg-[#3E1F47] text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-[#5D3F6B] transition duration-300 w-full">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9M12 5l7 7-7 7" />
+        </svg>
+        Quitter l'événement
+    </button>
+</form>
+
+
                     @endif
                 </div>
             @endforeach
@@ -47,5 +63,15 @@
         <!-- Message si aucun événement -->
         <p class="text-gray-600 text-lg text-center mt-8">Vous n'avez rejoint aucun événement pour l'instant.</p>
     @endif
+</div>
+<div>
+    <div class="mt-8 text-center">
+        <a href="{{ route('home') }}" class="flex items-center justify-center bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 hover:bg-[#C99E9A] max-w-max mx-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span class="text-lg">Revenir au profil</span>
+        </a>
+    </div>
 </div>
 @endsection

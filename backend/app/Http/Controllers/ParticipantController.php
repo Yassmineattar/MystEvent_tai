@@ -40,7 +40,13 @@ class ParticipantController extends Controller
     public function myEvents()
     {
         $events = Auth::user()->participations;
-        return view('participants.my-events', compact('events'));
+        //petite modification ici 
+        $eventsCount = $events->count(); // Compter les événements
+
+        // Enregistrer le nombre d'événements dans la session
+        session(['eventsCount' => $eventsCount]);
+
+        return view('participants.my-events', compact('events', 'eventsCount'));
     }
 
     /**
@@ -62,6 +68,7 @@ class ParticipantController extends Controller
 
         return view('participants.interested', compact('event', 'interestedUsers', 'acceptedUsers'));
     }
+
     public function home()
     {
         // Charger les événements depuis la base de données triés par date
@@ -70,5 +77,39 @@ class ParticipantController extends Controller
         // Passer les événements à la vue
         return view('home.participator', ['events' => $events]);
     }
+
+    public function showDashboard()
+{
+    $user = auth()->user();
+
+    // Récupérer tous les événements rejoints par l'utilisateur
+    $events = $user->participations;  // Cela récupère tous les événements rejoints
+
+    // Si la relation participations retourne null ou une collection vide, initialise à un tableau vide
+    $eventsCount = $events ? $events->count() : 0;
+
+    // Passer les données à la vue
+    return view('home.participator', compact('eventsCount', 'events'));
+}
+
+public function leaveEvent($eventId)
+{
+    $user = auth()->user();
+
+    // Supprimer l'utilisateur de l'événement
+    $user->participations()->detach($eventId);
+
+    // Rediriger l'utilisateur avec un message de succès
+    return redirect()->route('participants.myEvents')->with('success', 'Vous avez quitté l\'événement avec succès.');
+}
+
+
+
+
+    
+
+
+    
+
     
 }

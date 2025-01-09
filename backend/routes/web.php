@@ -42,6 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update'); // Mise à jour
     Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy'); // Suppression
     Route::get('/events/available', [EventController::class, 'availableEvents'])->name('events.available');
+    //quitter evenement
+    Route::delete('/event/{event}/leave', [ParticipantController::class, 'leaveEvent'])->name('event.leave');
 
     // Routes pour les indices
      // Liste des indices d'un événement
