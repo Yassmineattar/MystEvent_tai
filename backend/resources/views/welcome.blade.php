@@ -118,7 +118,7 @@
 
             <!-- Slide 3 : Autre texte -->
             <div class="w-full flex-shrink-0 h-screen">
-                <div class="relative w-full h-full bg-cover bg-center" style="background-image: url('https://via.placeholder.com/800x400');">
+                <div class="relative w-full h-full bg-cover bg-center" style="background-image: url('https://images.squarespace-cdn.com/content/v1/5aadc54285ede1bd72181a3a/1521339647830-LKHTH62ZRY5TCGVCW81P/shutterstock_538256848.jpg?format=1500w');">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white">
                         <h1 class="text-7xl font-bold mb-6 text-white">Rejoignez l'Aventure</h1>
                         <p class="text-xl mb-8 px-8">Résolvez des énigmes et débloquez des indices pour vos événements mystères !</p>

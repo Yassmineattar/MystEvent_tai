@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-6xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-8">
     <!-- Titre de la page -->
-    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-8">🎟️ Mes Tickets</h1>
+    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-8">Mes Tickets</h1>
 
     <!-- Vérification des tickets -->
     @if($tickets->count() > 0)
