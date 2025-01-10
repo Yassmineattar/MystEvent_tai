@@ -162,15 +162,6 @@ class QuizSeeder extends Seeder
             'correct_answer' => 'Fête d’Iemanjá',
         ]);
 
-                // Question 18
-        Quiz::create([
-            'question' => 'Quel symbole est traditionnellement utilisé pour représenter une fête surprise ?',
-            'choice_1' => '🎉',
-            'choice_2' => '🎂',
-            'choice_3' => '🎈',
-            'correct_answer' => '🎉',
-        ]);
-
         // Question 19
         Quiz::create([
             'question' => 'Quel événement annuel célèbre le patrimoine et la culture dans le monde entier ?',

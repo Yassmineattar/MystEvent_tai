@@ -18,18 +18,24 @@ class EventSeeder extends Seeder
                 'description' => 'Venez vivre une soirée inoubliable avec des costumes élégants et des masques mystérieux.',
                 'eventDate' => '2025-02-14 20:00:00',
                 'organizerId' => 2,
+                'available_tickets'=> 100, 
+                'image' => 'events/masquerade.jpg',        
             ],
             [
                 'title' => 'Week-end aventure - Plage secrète',
                 'description' => 'Rejoignez-nous pour un week-end d’aventure et de détente sur une plage cachée.',
                 'eventDate' => '2025-06-10 15:00:00',
                 'organizerId' => 2,
+                'available_tickets'=> 100, 
+                'image' => 'events/beach.jpeg',
             ],
             [
                 'title' => 'Club de lecture - Enquête littéraire',
                 'description' => 'Participez à notre club de lecture mensuel, cette fois sur le thème des romans policiers.',
                 'eventDate' => '2025-03-05 18:00:00',
                 'organizerId' => 2,
+                'available_tickets'=> 100,
+                'image' => 'events/club-lecture.jpeg',
             ],
         ];
 

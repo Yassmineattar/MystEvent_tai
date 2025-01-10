@@ -13,13 +13,16 @@ class ParticipantController extends Controller
      * Afficher tous les événements disponibles pour rejoindre.
      */
     public function availableEvents()
-    {
-        $events = Event::whereDoesntHave('participants', function ($query) {
-            $query->where('user_id', Auth::id());
-        })->get();
+{
+    $events = Event::whereDoesntHave('participants', function ($query) {
+        $query->where('user_id', Auth::id());
+    })
+    ->orderBy('eventDate', 'asc') // Tri décroissant sur eventDate
+    ->get();
 
-        return view('participants.available-events', compact('events'));
-    }
+    return view('participants.available-events', compact('events'));
+}
+
 
     /**
      * Rejoindre un événement.

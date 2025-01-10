@@ -7,6 +7,7 @@ use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ClueController;
 use App\Http\Controllers\QuizzController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // 🌟 Page d'accueil principale
@@ -76,6 +77,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/quizz/{event}/success', [QuizzController::class, 'success'])->name('quizz.success');
     Route::get('/quizz/{event}/view-indices', [QuizzController::class, 'viewIndices'])->name('quizz.viewIndices');
     Route::get('/quizz/{event}/fail', [QuizzController::class, 'fail'])->name('quizz.fail');
+
+    Route::get('/settings', [UserController::class, 'edit'])->name('user.settings');
+    Route::post('/settings', [UserController::class, 'update'])->name('user.update');
+
 
     // 🎟️ Routes pour les tickets
     Route::get('/tickets/{ticket}', [TicketController::class, 'show'])->name('tickets.show');

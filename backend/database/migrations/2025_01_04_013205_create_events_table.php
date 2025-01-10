@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('description');
             $table->dateTime('eventDate');
+            $table->integer('available_tickets')->default(0);
+            $table->string('image')->nullable();
             $table->foreignId('organizerId')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

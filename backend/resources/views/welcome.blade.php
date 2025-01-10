@@ -118,7 +118,7 @@
 
             <!-- Slide 3 : Autre texte -->
             <div class="w-full flex-shrink-0 h-screen">
-                <div class="relative w-full h-full bg-cover bg-center" style="background-image: url('https://www.adobe.com/fr/creativecloud/illustration/discover/media_1347a56b22ebc2f1b573725f0316a46f94d800c1c.jpeg?width=750&format=jpeg&optimize=medium');">
+                <div class="relative w-full h-full bg-cover bg-center" style="background-image: url('https://via.placeholder.com/800x400');">
                     <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white">
                         <h1 class="text-7xl font-bold mb-6 text-white">Événement d'Art Numérique Immersif</h1>
                         <p class="text-xl mb-8 px-8">Vivez une expérience unique où l'art numérique prend vie sous forme interactive et immersive. Explorez des créations visuelles et sonores qui repoussent les frontières de l'imagination. Un voyage sensoriel à ne pas manquer !</p>

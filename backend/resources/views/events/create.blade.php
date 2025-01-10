@@ -8,7 +8,7 @@
     <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6"> Créer un Événement</h1>
 
     <!-- Formulaire de création d'événement -->
-    <form action="{{ route('events.store') }}" method="POST" class="space-y-6">
+    <form action="{{ route('events.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
         @csrf
 
         <!-- Champ Titre -->
@@ -27,6 +27,18 @@
         <div>
             <label for="eventDate" class="block text-lg font-medium text-gray-700 mb-2">Date de l'Événement</label>
             <input type="datetime-local" name="eventDate" id="eventDate" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-[#9B4F96] focus:border-[#9B4F96]" required>
+        </div>
+
+        <!-- Champ Tickets Restants -->
+        <div>
+            <label for="available_tickets" class="block text-lg font-medium text-gray-700 mb-2">Tickets Restants</label>
+            <input type="number" name="available_tickets" id="available_tickets" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-[#9B4F96] focus:border-[#9B4F96]" min="0" required>
+        </div>
+
+        <!-- Champ Image -->
+        <div>
+            <label for="image" class="block text-lg font-medium text-gray-700 mb-2">Image de l'Événement</label>
+            <input type="file" name="image" id="image" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-[#9B4F96] focus:border-[#9B4F96]" accept="image/*">
         </div>
 
         <!-- Bouton de soumission -->

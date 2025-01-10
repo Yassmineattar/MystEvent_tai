@@ -69,13 +69,15 @@ class QuizzController extends Controller
 
     // Afficher le message de succès
     public function success(Event $event)
-    {
-        if (session()->has('quiz_failed')) {
-            session()->forget('answered_questions');
-            session()->forget('quiz_failed');
-            return redirect()->route('participants.myEvents')->with('error', 'Vous avez échoué au quiz.');
-        }
+{
+    if (session()->has('quiz_failed')) {
+        session()->forget('answered_questions');
+        session()->forget('quiz_failed');
+        return redirect()->route('participants.myEvents')->with('error', 'Vous avez échoué au quiz.');
+    }
 
+    // Vérifier s'il reste des tickets disponibles
+    if ($event->available_tickets > 0) {
         // Mettre à jour le statut dans la table pivot
         $event->participants()->updateExistingPivot(auth()->id(), ['status' => 'accepted']);
 
@@ -94,10 +96,16 @@ class QuizzController extends Controller
         // Récupérer les indices collectés
         $clues = $event->clues()->take(count(session('answered_questions', [])))->get();
 
+        // Décrémenter le nombre de tickets disponibles
+        $event->decrement('available_tickets');
+
         session()->forget('answered_questions');
 
         return view('quizz.success', compact('event', 'clues'));
+    } else {
+        return redirect()->route('participants.myEvents')->with('error', 'Il n\'y a plus de tickets disponibles pour cet événement.');
     }
+}
 
     // Afficher la vue d'échec
     public function fail(Event $event)

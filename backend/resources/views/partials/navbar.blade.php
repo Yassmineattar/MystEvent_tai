@@ -54,7 +54,6 @@
                         @endif
                     </div>
                 </div>
-
                 <!-- Bouton séparé Mes tickets -->
                 @if(auth()->user()->user_type === 'participator')
                 <a href="{{ route('participants.myTickets') }}" class="flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
@@ -62,12 +61,24 @@
                     <span>Mes tickets</span>
                 </a>
                 @endif
+                <!-- Lien Profil avec menu déroulant -->
+                <div class="relative">
+                    <button id="profile-menu-button" class="flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
+                        <i class="fas fa-user-alt"></i>
+                        <span>Profil</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </button>
 
-                <!-- Lien Profil -->
-                <a href="{{ route('home') }}" class="flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
-                    <i class="fas fa-user-alt"></i>
-                    <span>Profil</span>
-                </a>
+                    <!-- Menu déroulant Profil -->
+                    <div id="profile-menu" class="hidden absolute bg-[#F1E8E1] text-[#333333] rounded-md shadow-lg mt-2 z-10">
+                        <a href="{{ route('home') }}" class="block px-4 py-2 hover:bg-[#A38E91]">
+                            <i class="fas fa-tachometer-alt"></i> Tableau de bord
+                        </a>
+                        <a href="{{ route('user.settings') }}" class="block px-4 py-2 hover:bg-[#A38E91]">
+                            <i class="fas fa-cogs"></i> Paramètres
+                        </a>
+                    </div>
+                </div>
 
                 <!-- Déconnexion -->
                 <form action="{{ route('logout') }}" method="POST" class="inline">
@@ -125,10 +136,12 @@
         <a href="{{ route('participants.myTickets') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
             <i class="fas fa-ticket-alt"></i> Mes tickets
         </a>
-
         @endif
         <a href="{{ route('home') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
             <i class="fas fa-user-alt"></i> Profil
+        </a>
+        <a href="{{ route('user.settings') }}" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
+            <i class="fas fa-cogs"></i> Paramètres
         </a>
         <form action="{{ route('logout') }}" method="POST" class="block text-[#333333] hover:bg-[#A38E91] px-3 py-2 rounded-md text-sm font-medium">
             @csrf
@@ -163,5 +176,12 @@
     const eventMenu = document.getElementById('event-menu');
     eventMenuButton.addEventListener('click', () => {
         eventMenu.classList.toggle('hidden');
+    });
+
+    // Toggle du menu dropdown Profil
+    const profileMenuButton = document.getElementById('profile-menu-button');
+    const profileMenu = document.getElementById('profile-menu');
+    profileMenuButton.addEventListener('click', () => {
+        profileMenu.classList.toggle('hidden');
     });
 </script>

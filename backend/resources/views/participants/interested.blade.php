@@ -4,9 +4,7 @@
 <div class="max-w-7xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-10">
     <!-- Titre principal -->
     <div class="text-center mb-12">
-        <h1 class="text-5xl font-extrabold text-[#5D3F6B]">
-            <i class="fas fa-users mr-2"></i> Participants intéressés
-        </h1>
+        <h1 class="text-5xl font-extrabold text-[#5D3F6B]">Participants intéressés</h1>
         <h2 class="text-2xl font-semibold text-gray-600 mt-2">Événement : <span class="text-[#9B4F96]">{{ $event->title }}</span></h2>
     </div>
 
@@ -68,8 +66,8 @@
 
     <!-- Bouton de retour -->
     <div class="text-right mt-12">
-        <a href="{{ route('events.index') }}" class="bg-[#5D3F6B] text-white px-6 py-3 rounded-md font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
-            <i class="fas fa-arrow-left mr-2"></i> Retour aux événements
+        <a href="{{ route('events.index') }}" class="inline-flex items-center bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-xl transition duration-300">
+            Retour aux événements
         </a>
     </div>
 </div>

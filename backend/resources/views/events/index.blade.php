@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-7xl mx-auto mt-12 bg-white shadow-md rounded-lg p-8">
     <!-- Titre principal -->
-    <h1 class="text-4xl font-extrabold text-[#5D3F6B] mb-8 text-center"> Mes Événements</h1>
+    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-8">Mes Événements</h1>
 
     <!-- Bouton Créer un événement -->
     <div class="text-right mb-8"> 
@@ -17,12 +17,29 @@
     @if($events->count() > 0)
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($events as $event)
-                <div class="bg-[#F1E8E1] shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300">
+                <div class="bg-[#F1E8E1] shadow-md rounded-lg p-6 hover:shadow-lg transition duration-300">
+                    <!-- Image de l'événement -->
+                    @if($event->image)
+                        <img src="{{ asset('storage/'.$event->image) }}" alt="{{ $event->title }}" class="w-full h-48 object-cover rounded-lg mb-6 transition-transform duration-300 hover:scale-105">
+                    @else
+                        <div class="w-full h-48 bg-gray-300 rounded-lg mb-6"></div> <!-- Placeholder si aucune image -->
+                    @endif
+
                     <!-- Titre de l'événement -->
-                    <h2 class="text-2xl font-bold text-[#5D3F6B] mb-2 text-center">{{ $event->title }}</h2>
-                    
-                    <!-- Date de l'événement en gras et centrée -->
-                    <p class="text-gray-600 mb-4 text-center font-bold"> {{ $event->eventDate->format('d/m/Y H:i') }}</p>
+                    <h2 class="text-2xl font-bold text-[#5D3F6B] mb-2">{{ $event->title }}</h2>
+                    <p class="text-gray-600 mb-4">Date : {{ $event->eventDate->format('d/m/Y H:i') }}</p>
+
+                    <!-- Affichage des tickets restants -->
+                    <div class="mb-4">
+                        <p class="text-gray-800 font-semibold">
+                            Tickets restants: 
+                            @if($event->available_tickets > 0)
+                                <span class="text-green-600">{{ $event->available_tickets }}</span>
+                            @else
+                                <span class="text-red-600">Sold Out</span>
+                            @endif
+                        </p>
+                    </div>
 
                     <!-- Boutons d'actions -->
                     <div class="flex flex-wrap gap-4 mt-4">
@@ -73,10 +90,7 @@
                 const form = document.createElement('form');
                 form.action = url;
                 form.method = 'POST';
-                form.innerHTML = `
-                    @csrf
-                    @method('DELETE')
-                `;
+                form.innerHTML = `@csrf @method('DELETE')`;
                 document.body.appendChild(form);
                 form.submit();
             }
