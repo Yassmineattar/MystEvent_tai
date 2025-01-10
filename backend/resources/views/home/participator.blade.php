@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 @section('content')
 <div class="max-w-4xl mx-auto mt-12 bg-white shadow-xl my-6  rounded-xl p-10 ">
     <!-- Titre de bienvenue -->
-    <h1 class="text-5xl font-bold text-[#5D3F6B] mb-6 text-shadow-md">Bienvenue, {{ Auth::user()->name }} ! 🎉</h1>
+    <h1 class="text-5xl font-bold text-[#5D3F6B] mb-6 text-shadow-md">Bienvenue, {{ Auth::user()->name }} ! </h1>
     <p class="text-gray-600 text-lg mb-8">
     </p>
 

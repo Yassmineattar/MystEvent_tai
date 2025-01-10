@@ -6,7 +6,7 @@
 <div class="max-w-6xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-10">
     <!-- Titre principal -->
     <div class="text-center mb-10">
-        <h1 class="text-4xl font-extrabold text-[#5D3F6B]">🔍 Indices de l'Événement</h1>
+        <h1 class="text-4xl font-extrabold text-[#5D3F6B]"> Indices de l'Événement</h1>
         <h2 class="text-2xl font-semibold text-gray-600 mt-2">{{ $event->title }}</h2>
     </div>
 

@@ -5,7 +5,7 @@
 @section('content')
 <div class="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-8 text-center">
     <!-- Titre de la page -->
-    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6">👋 Bienvenue organisateur {{ Auth::user()->name }} !</h1>
+    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6"> Bienvenue organisateur {{ Auth::user()->name }} !</h1>
     <p class="text-lg text-gray-700 mb-8">Gérez vos événements et créez-en de nouveaux pour offrir des expériences inoubliables.</p>
 
     <!-- Boutons d'action -->

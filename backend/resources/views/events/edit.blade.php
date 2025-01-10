@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-8">
     <!-- Titre principal -->
-    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6">✏️ Modifier l'Événement</h1>
+    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6"> Modifier l'Événement</h1>
 
     <!-- Formulaire de modification -->
     <form action="{{ route('events.update', $event->id) }}" method="POST" class="space-y-6">
