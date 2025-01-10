@@ -1,9 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Liste des indices')
-
 @section('content')
-<div class="max-w-6xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-10">
+<div class="max-w-7xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-10">
     <!-- Titre principal -->
     <div class="text-center mb-10">
         <h1 class="text-4xl font-extrabold text-[#5D3F6B]"> Indices de l'Événement</h1>
@@ -21,14 +19,14 @@
     @if($clues->count() < 4)
         <!-- Bouton Ajouter un nouvel indice -->
         <div class="text-right mb-8">
-            <a href="{{ route('clues.create', $event->id) }}" class="bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-xl transition duration-300">
-                ➕ Ajouter un nouvel indice
+            <a href="{{ route('clues.create', $event->id) }}" class="bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-md font-medium shadow-md hover:shadow-xl transition duration-300">
+                <i class="fas fa-plus mr-2"></i> Ajouter un nouvel indice
             </a>
         </div>
     @else
         <!-- Message de limite atteinte -->
-        <div class="bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-6 shadow-md text-center">
-            🚫 Vous avez déjà ajouté 4 indices majeurs pour cet événement. Vous ne pouvez pas en ajouter davantage.
+        <div class="bg-[#c6a8a5] text-white p-4 rounded-lg mb-6 shadow-md text-center font-bold">
+            <i class="fas fa-ban mr-2"></i> Vous avez déjà ajouté 4 indices majeurs pour cet événement. Vous ne pouvez pas en ajouter davantage.
         </div>
     @endif
 
@@ -36,17 +34,17 @@
     @if($clues->count() > 0)
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach($clues as $clue)
-                <div class="bg-[#F1E8E1] text-[#5D3F6B] p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                <div class="bg-[#F1E8E1] text-[#5D3F6B] p-4 rounded-lg shadow-md hover:shadow-lg transition duration-300">
                     <p class="text-lg font-medium mb-4">{{ $clue->content }}</p>
                     <div class="flex justify-between items-center gap-4">
                         <!-- Bouton Modifier -->
-                        <a href="{{ route('clues.edit', [$event->id, $clue->id]) }}" class="bg-yellow-500 text-white px-4 py-2 rounded-full font-medium hover:bg-yellow-600 transition duration-300">
-                            ✏️ Modifier
+                        <a href="{{ route('clues.edit', [$event->id, $clue->id]) }}" class="bg-[#9B4F96] text-white px-5 py-3 rounded-md shadow-md hover:bg-[#7F4D8A] transition duration-300 w-full font-bold">
+                            <i class="fas fa-pencil-alt mr-2"></i> Modifier
                         </a>
 
                         <!-- Bouton Supprimer avec SweetAlert -->
-                        <button onclick="confirmDeletion('{{ route('clues.destroy', [$event->id, $clue->id]) }}')" class="bg-red-500 text-white px-4 py-2 rounded-full font-medium hover:bg-red-600 transition duration-300">
-                            🗑️ Supprimer
+                        <button onclick="confirmDeletion('{{ route('clues.destroy', [$event->id, $clue->id]) }}')" class="bg-[#C19A9A] text-white px-5 py-3 rounded-md shadow-md hover:bg-[#C99E9A] transition duration-300 w-full font-bold">
+                            <i class="fas fa-trash-alt mr-2"></i> Supprimer
                         </button>
                     </div>
                 </div>
@@ -58,10 +56,11 @@
 
     <!-- Bouton Retour aux événements -->
     <div class="text-right mt-12">
-        <a href="{{ route('events.index') }}" class="bg-[#5D3F6B] text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
-            🔙 Retour aux événements
+        <a href="{{ route('events.index') }}" class="bg-[#5D3F6B] text-white px-6 py-3 rounded-md font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i> Retour aux événements
         </a>
     </div>
+
 </div>
 
 <!-- Script SweetAlert -->

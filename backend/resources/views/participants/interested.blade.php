@@ -4,14 +4,16 @@
 <div class="max-w-7xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-10">
     <!-- Titre principal -->
     <div class="text-center mb-12">
-        <h1 class="text-5xl font-extrabold text-[#5D3F6B]">👥 Participants intéressés</h1>
+        <h1 class="text-5xl font-extrabold text-[#5D3F6B]">
+            <i class="fas fa-users mr-2"></i> Participants intéressés
+        </h1>
         <h2 class="text-2xl font-semibold text-gray-600 mt-2">Événement : <span class="text-[#9B4F96]">{{ $event->title }}</span></h2>
     </div>
 
     <!-- Utilisateurs en attente -->
     <section class="mb-12">
         <h4 class="text-2xl font-semibold text-[#F59E0B] mb-6 flex items-center">
-            ⏳ Utilisateurs en attente
+            <i class="fas fa-hourglass-half mr-2"></i> Utilisateurs en attente
             <span class="ml-2 bg-yellow-100 text-yellow-800 text-sm font-bold px-3 py-1 rounded-full">{{ $interestedUsers->count() }}</span>
         </h4>
 
@@ -39,7 +41,7 @@
     <!-- Utilisateurs acceptés -->
     <section>
         <h4 class="text-2xl font-semibold text-[#10B981] mb-6 flex items-center">
-            ✅ Utilisateurs acceptés
+            <i class="fas fa-check-circle mr-2"></i> Utilisateurs acceptés
             <span class="ml-2 bg-green-100 text-green-800 text-sm font-bold px-3 py-1 rounded-full">{{ $acceptedUsers->count() }}</span>
         </h4>
 
@@ -66,8 +68,8 @@
 
     <!-- Bouton de retour -->
     <div class="text-right mt-12">
-        <a href="{{ route('events.index') }}" class="inline-flex items-center bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-xl transition duration-300">
-            🔙 Retour aux événements
+        <a href="{{ route('events.index') }}" class="bg-[#5D3F6B] text-white px-6 py-3 rounded-md font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i> Retour aux événements
         </a>
     </div>
 </div>

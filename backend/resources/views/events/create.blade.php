@@ -30,9 +30,15 @@
         </div>
 
         <!-- Bouton de soumission -->
-        <button type="submit" class="bg-[#5D3F6B] text-white px-6 py-3 rounded-lg font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
+        <button type="submit" class="bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl hover:opacity-90 transition duration-300 transform hover:scale-105">
             Créer l'Événement
         </button>
     </form>
+    <div class="text-right mt-12">
+        <a href="{{ route('events.index') }}" class="bg-[#5D3F6B] text-white px-6 py-3 rounded-md font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
+            <i class="fas fa-arrow-left mr-2"></i> Retour aux événements
+        </a>
+    </div>
+
 </div>
 @endsection

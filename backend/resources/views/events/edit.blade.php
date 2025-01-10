@@ -3,7 +3,9 @@
 @section('content')
 <div class="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-8">
     <!-- Titre principal -->
-    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6"> Modifier l'Événement</h1>
+    <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6">
+        <i class="fas fa-edit mr-2"></i> Modifier l'Événement
+    </h1>
 
     <!-- Formulaire de modification -->
     <form action="{{ route('events.update', $event->id) }}" method="POST" class="space-y-6">
@@ -31,7 +33,7 @@
         <!-- Bouton de soumission -->
         <div class="text-right">
             <button type="submit" class="bg-[#5D3F6B] text-white px-6 py-3 rounded-full font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
-                ✅ Mettre à jour
+                <i class="fas fa-check mr-2"></i> Mettre à jour
             </button>
         </div>
     </form>

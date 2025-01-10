@@ -3,43 +3,46 @@
 @section('content')
 <div class="max-w-7xl mx-auto mt-12 bg-white shadow-md rounded-lg p-8">
     <!-- Titre principal -->
-    <h1 class="text-4xl font-extrabold text-[#5D3F6B] mb-8"> Mes Événements</h1>
+    <h1 class="text-4xl font-extrabold text-[#5D3F6B] mb-8 text-center"> Mes Événements</h1>
 
     <!-- Bouton Créer un événement -->
-    <div class="text-right mb-8">
-        <a href="{{ route('events.create') }}" class="bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:opacity-90 transition duration-300">
-            ➕ Créer un nouvel événement
-        </a>
-    </div>
+    <div class="text-right mb-8"> 
+    <a href="{{ route('events.create') }}" class="bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl hover:opacity-90 transition duration-300 transform hover:scale-105">
+        <i class="fas fa-plus mr-2"></i> Créer un nouvel événement
+    </a>
+</div>
+
 
     <!-- Affichage des événements -->
     @if($events->count() > 0)
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach($events as $event)
-                <div class="bg-[#F1E8E1] shadow-md rounded-lg p-6 hover:shadow-lg transition duration-300">
+                <div class="bg-[#F1E8E1] shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300">
                     <!-- Titre de l'événement -->
-                    <h2 class="text-2xl font-bold text-[#5D3F6B] mb-2">{{ $event->title }}</h2>
-                    <p class="text-gray-600 mb-4"> {{ $event->eventDate->format('d/m/Y H:i') }}</p>
+                    <h2 class="text-2xl font-bold text-[#5D3F6B] mb-2 text-center">{{ $event->title }}</h2>
+                    
+                    <!-- Date de l'événement en gras et centrée -->
+                    <p class="text-gray-600 mb-4 text-center font-bold"> {{ $event->eventDate->format('d/m/Y H:i') }}</p>
 
                     <!-- Boutons d'actions -->
                     <div class="flex flex-wrap gap-4 mt-4">
                         <!-- Bouton Modifier -->
-                        <a href="{{ route('events.edit', $event->id) }}" class="flex items-center bg-yellow-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-yellow-600 transition duration-300">
+                        <a href="{{ route('events.edit', $event->id) }}" class="flex items-center justify-center bg-[#9B4F96] text-white px-5 py-3 rounded-md shadow-md hover:bg-[#7F4D8A] transition duration-300 w-full font-bold">
                             <i class="fas fa-edit mr-2"></i> Modifier
                         </a>
 
                         <!-- Bouton Supprimer avec SweetAlert -->
-                        <button onclick="confirmDeletion('{{ route('events.destroy', $event->id) }}')" class="flex items-center bg-red-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-red-600 transition duration-300">
+                        <button onclick="confirmDeletion('{{ route('events.destroy', $event->id) }}')" class="flex items-center justify-center bg-[#C99E9A] text-white px-5 py-3 rounded-md shadow-md hover:bg-[#C19A9A] transition duration-300 w-full font-bold">
                             <i class="fas fa-trash-alt mr-2"></i> Supprimer
                         </button>
 
                         <!-- Bouton Voir les indices -->
-                        <a href="{{ route('clues.index', $event->id) }}" class="flex items-center bg-blue-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-blue-600 transition duration-300">
+                        <a href="{{ route('clues.index', $event->id) }}" class="flex items-center justify-center bg-[#7F4D8A] text-white px-5 py-3 rounded-md shadow-md hover:bg-[#5D3F6B] transition duration-300 w-full font-bold">
                             <i class="fas fa-search mr-2"></i> Voir les indices
                         </a>
 
                         <!-- Bouton Voir les participants intéressés -->
-                        <a href="{{ route('participants.interested', $event->id) }}" class="flex items-center bg-gray-600 text-white px-4 py-2 rounded-full shadow-md hover:bg-gray-700 transition duration-300">
+                        <a href="{{ route('participants.interested', $event->id) }}" class="flex items-center justify-center bg-[#3E1F47] text-white px-5 py-3 rounded-md shadow-md hover:bg-[#5D3F6B] transition duration-300 w-full font-bold">
                             <i class="fas fa-users mr-2"></i> Voir les participants
                         </a>
                     </div>
@@ -48,7 +51,7 @@
         </div>
     @else
         <!-- Message si aucun événement trouvé -->
-        <p class="text-lg text-gray-600 mt-6">Aucun événement trouvé.</p>
+        <p class="text-lg text-gray-600 mt-6 text-center">Aucun événement trouvé.</p>
     @endif
 </div>
 
