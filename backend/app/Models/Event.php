@@ -8,7 +8,7 @@ class Event extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'eventDate', 'organizerId'];
+    protected $fillable = ['title', 'description', 'eventDate', 'available_tickets', 'organizerId'];
     /**
      * Cast des attributs en objets DateTime.
      */
@@ -50,6 +50,17 @@ class Event extends Model
         $clue = $this->clues()->find($clueId);
         $clue->content = $content;
         $clue->save();
+    }
+
+    // Ajouter une méthode pour réduire le nombre de tickets disponibles
+    public function decrementTickets()
+    {
+        if ($this->available_tickets > 0) {
+            $this->available_tickets--;
+            $this->save();
+            return true;
+        }
+        return false;
     }
 }
 

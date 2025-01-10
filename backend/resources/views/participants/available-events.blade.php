@@ -21,6 +21,7 @@
                     <tr>
                         <th class="py-4 px-6 text-left">Titre</th>
                         <th class="py-4 px-6 text-left">Date de l'événement</th>
+                        <th class="py-4 px-6 text-left">Tickets Restants</th> <!-- Nouvelle colonne -->
                         <th class="py-4 px-6 text-center">Actions</th>
                     </tr>
                 </thead>
@@ -30,12 +31,27 @@
                             <td class="py-4 px-6">{{ $event->title }}</td>
                             <td class="py-4 px-6">{{ $event->eventDate->format('d/m/Y H:i') }}</td>
                             <td class="py-4 px-6 text-center">
-                                <form action="{{ route('participants.joinEvent', $event->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="bg-[#5D3F6B] text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
-                                        Rejoindre
+                                <!-- Afficher Sold Out ou En cours -->
+                                @if($event->available_tickets == 0)
+                                    <span class="text-red-500 font-bold">Sold Out</span>
+                                @else
+                                    <span class="text-green-500 font-bold">En cours</span>
+                                @endif
+                            </td>
+                            <td class="py-4 px-6 text-center">
+                                <!-- Désactiver le bouton si les tickets sont épuisés -->
+                                @if($event->available_tickets == 0)
+                                    <button disabled class="bg-gray-400 text-white px-4 py-2 rounded-lg font-medium cursor-not-allowed">
+                                        Événement complet
                                     </button>
-                                </form>
+                                @else
+                                    <form action="{{ route('participants.joinEvent', $event->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="bg-[#5D3F6B] text-white px-4 py-2 rounded-lg font-medium shadow-md hover:bg-[#9B4F96] transition duration-300">
+                                            Rejoindre
+                                        </button>
+                                    </form>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

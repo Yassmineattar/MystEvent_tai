@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-4xl mx-auto mt-12 bg-white shadow-lg rounded-lg p-8 text-center">
+<div class="max-w-4xl mx-auto mt-12 my-5 bg-white shadow-lg rounded-lg p-8 text-center">
     <!-- Titre de la page -->
     <h1 class="text-4xl font-bold text-[#5D3F6B] mb-6">🎉 Félicitations !</h1>
     <p class="text-lg text-gray-700 mb-6">Vous avez terminé le quiz avec succès !</p>
