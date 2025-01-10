@@ -24,7 +24,7 @@
         <!-- Bouton Mettre à jour -->
         <div class="text-center mt-6">
             <button type="submit" class="bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-xl transition duration-300">
-                ✅ Mettre à jour
+                Mettre à jour
             </button>
         </div>
     </form>
@@ -32,7 +32,7 @@
     <!-- Bouton Retour -->
     <div class="text-center mt-8">
         <a href="{{ route('clues.index', $event->id) }}" class="bg-[#F1E8E1] text-[#5D3F6B] px-6 py-3 rounded-full font-medium shadow-md hover:bg-[#E0D2D2] transition duration-300">
-            🔙 Retour à la liste des indices
+             Retour à la liste des indices
         </a>
     </div>
 </div>

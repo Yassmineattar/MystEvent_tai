@@ -25,7 +25,7 @@
         </div>
     @else
         <!-- Message de limite atteinte -->
-        <div class="bg-[#c6a8a5] text-white p-4 rounded-lg mb-6 shadow-md text-center font-bold">
+        <div class="bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-6 shadow-md text-center">
             <i class="fas fa-ban mr-2"></i> Vous avez déjà ajouté 4 indices majeurs pour cet événement. Vous ne pouvez pas en ajouter davantage.
         </div>
     @endif
