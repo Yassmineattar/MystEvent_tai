@@ -80,6 +80,55 @@
                     </div>
                 </div>
 
+                <div class="relative">
+    <!-- Icône de notification -->
+    <button id="notification-button" class="relative flex items-center space-x-2 text-lg font-semibold text-[#F1E8E1] hover:text-[#C99E9A] transition duration-300 px-3 py-2 rounded-md">
+        <i class="fas fa-bell"></i>
+        @php
+            $unreadCount = \App\Models\Notification::where('user_id', auth()->id())->where('read', false)->count();
+        @endphp
+        @if ($unreadCount > 0)
+            <span class="bg-red-500 text-white text-xs rounded-full px-2 py-1 absolute -top-1 -right-2">{{ $unreadCount }}</span>
+        @endif
+    </button>
+
+    <!-- Dropdown des notifications -->
+    <div id="notification-menu" class="hidden absolute bg-white text-black rounded-md shadow-lg mt-2 right-0 z-10 w-80">
+        <div class="p-4 border-b">
+            <h2 class="text-lg font-bold">Notifications</h2>
+        </div>
+        @php
+            $notifications = \App\Models\Notification::where('user_id', auth()->id())->orderBy('created_at', 'desc')->take(5)->get();
+        @endphp
+
+        <ul class="divide-y divide-gray-200">
+            @if ($notifications->isEmpty())
+                <li class="p-4 text-gray-500">Aucune notification pour le moment.</li>
+            @else
+                @foreach ($notifications as $notification)
+                    <li class="flex justify-between items-center p-4">
+                        <span>{{ $notification->message }}</span>
+                        <form method="POST" action="{{ route('notifications.markAsRead', $notification->id) }}">
+                            @csrf
+                            <button type="submit" class="text-red-500 hover:text-red-700">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </form>
+                    </li>
+                @endforeach
+            @endif
+        </ul>
+
+        <!-- Bouton pour marquer toutes les notifications comme lues -->
+        <form method="POST" action="{{ route('notifications.markAllRead') }}" class="p-4">
+            @csrf
+            <button type="submit" class="bg-[#5D3F6B] text-white px-4 py-2 rounded-lg shadow hover:bg-[#9B4F96] transition duration-300 w-full">
+                Marquer toutes comme lues
+            </button>
+        </form>
+    </div>
+</div>
+
                 <!-- Déconnexion -->
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
@@ -183,5 +232,20 @@
     const profileMenu = document.getElementById('profile-menu');
     profileMenuButton.addEventListener('click', () => {
         profileMenu.classList.toggle('hidden');
+    });
+</script>
+<script>
+    // Toggle du menu dropdown des notifications
+    const notificationButton = document.getElementById('notification-button');
+    const notificationMenu = document.getElementById('notification-menu');
+    notificationButton.addEventListener('click', () => {
+        notificationMenu.classList.toggle('hidden');
+    });
+
+    // Fermer le dropdown en cliquant à l'extérieur
+    document.addEventListener('click', (e) => {
+        if (!notificationButton.contains(e.target) && !notificationMenu.contains(e.target)) {
+            notificationMenu.classList.add('hidden');
+        }
     });
 </script>

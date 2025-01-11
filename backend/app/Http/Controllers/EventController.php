@@ -6,6 +6,8 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use App\Models\Notification;
 
 class EventController extends Controller
 {
@@ -55,6 +57,18 @@ class EventController extends Controller
         }
     
         $event->save();
+
+        // 🔔 Créer une notification pour chaque participant
+    $participants = User::where('user_type', 'participator')->get();
+
+    foreach ($participants as $participant) {
+        Notification::create([
+            'user_id' => $participant->id,
+            'type' => 'event_created',
+            'message' => 'Un nouvel événement a été créé : "' . $event->title . '". Découvrez-le dans la section événements disponibles.',
+            'read' => false,
+        ]);
+    }
     
         return redirect()->route('events.index')->with('success', 'Événement créé avec succès.');
     }

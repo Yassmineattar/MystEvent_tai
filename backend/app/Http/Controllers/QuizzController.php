@@ -8,6 +8,7 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\TicketEmail;
+use App\Models\Notification;
 
 class QuizzController extends Controller
 {
@@ -93,6 +94,13 @@ class QuizzController extends Controller
         // Envoyer le ticket par email
         Mail::to(auth()->user()->email)->send(new TicketEmail($ticket));
 
+        // 🔔 Créer une notification pour l'organisateur
+        Notification::create([
+            'user_id' => $event->organizerId,
+            'type' => 'ticket_won',
+            'message' => 'Le participant ' . auth()->user()->name . ' a gagné un ticket pour l\'événement "' . $event->title . '".',
+            'read' => false,
+        ]);
         // Récupérer les indices collectés
         $clues = $event->clues()->take(count(session('answered_questions', [])))->get();
 
