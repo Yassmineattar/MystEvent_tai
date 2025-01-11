@@ -9,6 +9,7 @@ use App\Http\Controllers\ClueController;
 use App\Http\Controllers\QuizzController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 // 🌟 Page d'accueil principale
 Route::get('/', function () {
@@ -43,6 +44,20 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/events/{event}', [EventController::class, 'update'])->name('events.update'); // Mise à jour
     Route::delete('/events/{event}', [EventController::class, 'destroy'])->name('events.destroy'); // Suppression
     Route::get('/events/available', [EventController::class, 'availableEvents'])->name('events.available');
+    // Route pour marquer une notification comme lue
+    Route::post('/notifications/{id}/markAsRead', function ($id) {
+    \App\Models\Notification::where('id', $id)->update(['read' => true]);
+
+    return redirect()->back();
+})->name('notifications.markAsRead');
+
+    // Route pour marquer toutes les notifications comme lues
+    Route::post('/notifications/mark-all-read', function () {
+    \App\Models\Notification::where('user_id', auth()->id())->update(['read' => true]);
+
+    return redirect()->back();
+})->name('notifications.markAllRead');
+
     //quitter evenement
     Route::delete('/event/{event}/leave', [ParticipantController::class, 'leaveEvent'])->name('event.leave');
 
