@@ -23,9 +23,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //test
-Route::get('/welcome', function () {
+/*Route::get('/welcome', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome');*/
 //test
 Route::get('/welcome', [EventController::class, 'show'])->name('welcome');
 

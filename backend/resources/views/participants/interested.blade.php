@@ -66,7 +66,7 @@
 
     <!-- Bouton de retour -->
     <div class="text-right mt-12">
-        <a href="{{ route('events.index') }}" class="inline-flex items-center bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-full font-medium shadow-md hover:shadow-xl transition duration-300">
+        <a href="{{ route('events.index') }}" class="inline-flex items-center bg-gradient-to-r from-[#5D3F6B] to-[#9B4F96] text-white px-6 py-3 rounded-lg font-medium shadow-md hover:shadow-xl transition duration-300">
             Retour aux événements
         </a>
     </div>
